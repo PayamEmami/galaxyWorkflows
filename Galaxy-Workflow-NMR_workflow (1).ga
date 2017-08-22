@@ -1,0 +1,394 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "NMR workflow", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "content_id": "mtbls_nmr_raw_dummy_importer", 
+            "errors": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": null, 
+            "name": "mtbls_nmr_raw_importer", 
+            "outputs": [
+                {
+                    "name": "nmr_raw", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 202.5, 
+                "top": 180
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionnmr_raw": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "nmr_raw"
+                }
+            }, 
+            "tool_id": "mtbls_nmr_raw_dummy_importer", 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"mtbls_id\": \"\\\"\\\"\"}", 
+            "tool_version": "0.4", 
+            "type": "tool", 
+            "uuid": "00c4c0b8-2513-49f7-9163-0e89b166c1b7", 
+            "workflow_outputs": []
+        }, 
+        "1": {
+            "annotation": "", 
+            "content_id": null, 
+            "errors": null, 
+            "id": 1, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 230.484375, 
+                "top": 515.46875
+            }, 
+            "tool_id": null, 
+            "tool_state": "{}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "aa1e6205-bb09-41a9-8026-f5e3866a4d1e", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "9fd874df-7092-445c-911c-fbbc920b288f"
+                }
+            ]
+        }, 
+        "2": {
+            "annotation": "", 
+            "content_id": "get_study_json", 
+            "errors": null, 
+            "id": 2, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": null, 
+            "name": "get_study_json", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "json"
+                }
+            ], 
+            "position": {
+                "left": 225, 
+                "top": 638.984375
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_id": "get_study_json", 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"mtbls_id\": \"\\\"MTBLS1\\\"\"}", 
+            "tool_version": "1.0", 
+            "type": "tool", 
+            "uuid": "8d99aef7-f17f-4ab8-ae48-c06ce3613cd7", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "", 
+            "content_id": "nmrmlconv", 
+            "errors": null, 
+            "id": 3, 
+            "input_connections": {
+                "infile": {
+                    "id": 0, 
+                    "output_name": "nmr_raw"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool nmrmlconv", 
+                    "name": "infile"
+                }
+            ], 
+            "label": null, 
+            "name": "nmrmlconv", 
+            "outputs": [
+                {
+                    "name": "outfile", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 380.015625, 
+                "top": 275
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutfile": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "outfile"
+                }
+            }, 
+            "tool_id": "nmrmlconv", 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"venformat\": \"\\\"bruker\\\"\", \"infile\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_version": "0.4", 
+            "type": "tool", 
+            "uuid": "3466b19b-cc17-4dba-a5ba-1eb87a634973", 
+            "workflow_outputs": []
+        }, 
+        "4": {
+            "annotation": "", 
+            "content_id": "zip-nmrml-collection", 
+            "errors": null, 
+            "id": 4, 
+            "input_connections": {
+                "infiles": {
+                    "id": 3, 
+                    "output_name": "outfile"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool ZIP nmrML Collection", 
+                    "name": "infiles"
+                }
+            ], 
+            "label": null, 
+            "name": "ZIP nmrML Collection", 
+            "outputs": [
+                {
+                    "name": "outfile", 
+                    "type": "no_unzip.zip"
+                }
+            ], 
+            "position": {
+                "left": 520.53125, 
+                "top": 403
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutfile": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "outfile"
+                }
+            }, 
+            "tool_id": "zip-nmrml-collection", 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"infiles\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_version": "0.4", 
+            "type": "tool", 
+            "uuid": "1b98a8e5-76bb-46b7-9832-db41e6af823d", 
+            "workflow_outputs": []
+        }, 
+        "5": {
+            "annotation": "", 
+            "content_id": "rnmr1d", 
+            "errors": null, 
+            "id": 5, 
+            "input_connections": {
+                "infile": {
+                    "id": 4, 
+                    "output_name": "outfile"
+                }, 
+                "macrofile": {
+                    "id": 1, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool rnmr1d", 
+                    "name": "infile"
+                }, 
+                {
+                    "description": "runtime parameter for tool rnmr1d", 
+                    "name": "macrofile"
+                }
+            ], 
+            "label": null, 
+            "name": "rnmr1d", 
+            "outputs": [
+                {
+                    "name": "outfile", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 597.03125, 
+                "top": 506
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutfile": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "outfile"
+                }
+            }, 
+            "tool_id": "rnmr1d", 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"infile\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"macrofile\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_version": "0.4", 
+            "type": "tool", 
+            "uuid": "d9c1dbbf-fe9c-4a78-8bb1-42513fc95c70", 
+            "workflow_outputs": []
+        }, 
+        "6": {
+            "annotation": "", 
+            "content_id": "rnmr1d-prepare-output", 
+            "errors": null, 
+            "id": 6, 
+            "input_connections": {
+                "infile": {
+                    "id": 5, 
+                    "output_name": "outfile"
+                }, 
+                "infilej": {
+                    "id": 2, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool rnmr1d-prepare-output", 
+                    "name": "infilej"
+                }, 
+                {
+                    "description": "runtime parameter for tool rnmr1d-prepare-output", 
+                    "name": "infile"
+                }
+            ], 
+            "label": null, 
+            "name": "rnmr1d-prepare-output", 
+            "outputs": [
+                {
+                    "name": "outputPeakTableOut", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "outputMetaDataOut", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "outputVariablesOut", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 688.03125, 
+                "top": 664
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutputMetaDataOut": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "outputMetaDataOut"
+                }, 
+                "HideDatasetActionoutputPeakTableOut": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "outputPeakTableOut"
+                }, 
+                "HideDatasetActionoutputVariablesOut": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "outputVariablesOut"
+                }
+            }, 
+            "tool_id": "rnmr1d-prepare-output", 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"infilej\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"infile\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_version": "0.1", 
+            "type": "tool", 
+            "uuid": "4ff1239c-0a1f-4efe-8a70-a214b39029f3", 
+            "workflow_outputs": []
+        }, 
+        "7": {
+            "annotation": "", 
+            "content_id": "Multivariate", 
+            "errors": null, 
+            "id": 7, 
+            "input_connections": {
+                "dataMatrix_in": {
+                    "id": 6, 
+                    "output_name": "outputPeakTableOut"
+                }, 
+                "sampleMetadata_in": {
+                    "id": 6, 
+                    "output_name": "outputMetaDataOut"
+                }, 
+                "variableMetadata_in": {
+                    "id": 6, 
+                    "output_name": "outputVariablesOut"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Multivariate", 
+                    "name": "sampleMetadata_in"
+                }, 
+                {
+                    "description": "runtime parameter for tool Multivariate", 
+                    "name": "variableMetadata_in"
+                }, 
+                {
+                    "description": "runtime parameter for tool Multivariate", 
+                    "name": "dataMatrix_in"
+                }
+            ], 
+            "label": null, 
+            "name": "Multivariate", 
+            "outputs": [
+                {
+                    "name": "sampleMetadata_out", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "variableMetadata_out", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "figure", 
+                    "type": "pdf"
+                }, 
+                {
+                    "name": "information", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 997.484375, 
+                "top": 665.453125
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "Multivariate", 
+            "tool_state": "{\"advGph\": \"{\\\"__current_case__\\\": 0, \\\"opgC\\\": \\\"default\\\"}\", \"__page__\": null, \"sampleMetadata_in\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"predI\": \"\\\"1\\\"\", \"respC\": \"\\\"metabolic syndrome\\\"\", \"orthoI\": \"\\\"2\\\"\", \"variableMetadata_in\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"advCpt\": \"{\\\"opcC\\\": \\\"default\\\", \\\"__current_case__\\\": 0}\", \"dataMatrix_in\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"testL\": \"\\\"FALSE\\\"\"}", 
+            "tool_version": "2.3.10", 
+            "type": "tool", 
+            "uuid": "520899da-20a6-4105-9f56-62518f99e723", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "information", 
+                    "uuid": "ce42617d-bdb4-449e-b8da-856e96e01cbd"
+                }, 
+                {
+                    "label": null, 
+                    "output_name": "variableMetadata_out", 
+                    "uuid": "04dd8221-68fb-4d9b-b59e-3038d2b83001"
+                }, 
+                {
+                    "label": null, 
+                    "output_name": "sampleMetadata_out", 
+                    "uuid": "9b3a367f-9e41-4a30-b298-88a20949182e"
+                }, 
+                {
+                    "label": null, 
+                    "output_name": "figure", 
+                    "uuid": "81be57cc-6d81-4110-bf26-4909b2bf7ff8"
+                }
+            ]
+        }
+    }, 
+    "uuid": "012991a0-69ad-485e-a4b7-ddb463d9f2d0"
+}
